@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "locations",
+  "version": "${version}",
+  "name": "Locations",
+  "description": "Lightweight server-side fabric mod that allows the use of /location.",
+  "authors": ["Lumps"],
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["dev.locations.LocationsMod"]
+  },
+  "depends": {
+    "fabricloader": ">=0.14.0",
+    "minecraft": "1.21.10",
+    "fabric-api": "*"
+  }
+}
