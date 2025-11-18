@@ -198,7 +198,7 @@ public final class LocationsMod implements ModInitializer {
                 .requires(src -> true) // allow all players
                 .then(literal("create")
                     .then(argument("name", StringArgumentType.string())
-                        .then(argument("radius", IntegerArgumentType.integer(1, 100))
+                        .then(argument("radius", IntegerArgumentType.integer(1, 500))
                             // name radius
                             .executes(ctx -> {
                                 ServerCommandSource src = ctx.getSource();
