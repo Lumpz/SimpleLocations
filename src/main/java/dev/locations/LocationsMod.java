@@ -38,6 +38,8 @@ import static net.minecraft.server.command.CommandManager.literal;
 
 public final class LocationsMod implements ModInitializer {
     public static final String MOD_ID = "locations";
+	
+	 private static final int MAX_LOCATION_RADIUS = 500;
 
     private final Map<UUID, String> lastInside = new HashMap<>();
 
@@ -198,7 +200,7 @@ public final class LocationsMod implements ModInitializer {
                 .requires(src -> true) // allow all players
                 .then(literal("create")
                     .then(argument("name", StringArgumentType.string())
-                        .then(argument("radius", IntegerArgumentType.integer(1, 500))
+                        .then(argument("radius", IntegerArgumentType.integer(1, MAX_LOCATION_RADIUS))
                             // name radius
                             .executes(ctx -> {
                                 ServerCommandSource src = ctx.getSource();
@@ -206,7 +208,7 @@ public final class LocationsMod implements ModInitializer {
                                 if (p == null) return 0;
 
                                 String name = StringArgumentType.getString(ctx, "name");
-                                final int r = Math.min(IntegerArgumentType.getInteger(ctx, "radius"), 100);
+                                final int r = Math.min(IntegerArgumentType.getInteger(ctx, "radius"), MAX_LOCATION_RADIUS);
                                 Identifier dim = src.getWorld().getRegistryKey().getValue();
                                 BlockPos pos = p.getBlockPos();
 
@@ -238,7 +240,7 @@ public final class LocationsMod implements ModInitializer {
                                         if (p == null) return 0;
 
                                         String name = StringArgumentType.getString(ctx, "name");
-                                        final int r = Math.min(IntegerArgumentType.getInteger(ctx, "radius"), 100);
+                                        final int r = Math.min(IntegerArgumentType.getInteger(ctx, "radius"), MAX_LOCATION_RADIUS);
                                         String shapeStr = StringArgumentType.getString(ctx, "shape");
 
                                         Location.Shape shape;
